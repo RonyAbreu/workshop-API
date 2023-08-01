@@ -16,7 +16,6 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 
 @Entity
 @Table(name = "tb_user")
