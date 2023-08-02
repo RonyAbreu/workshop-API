@@ -1,5 +1,6 @@
 package dcx.ufpb.br.workshop.entities.pk;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dcx.ufpb.br.workshop.entities.Order;
 import dcx.ufpb.br.workshop.entities.Product;
 import jakarta.persistence.Embeddable;

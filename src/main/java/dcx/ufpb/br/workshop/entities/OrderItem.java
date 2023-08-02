@@ -1,26 +1,23 @@
 package dcx.ufpb.br.workshop.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dcx.ufpb.br.workshop.entities.pk.OrderItemPK;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 @NoArgsConstructor
-@Getter
-@Setter
 
 @Entity
 @Table(name = "tb_order_item")
 public class OrderItem implements Serializable {
 
     @EmbeddedId
-    private OrderItemPK id;
+    private OrderItemPK id = new OrderItemPK();
 
     private Integer quantity;
     private Double price;
@@ -31,7 +28,7 @@ public class OrderItem implements Serializable {
         this.quantity = quantity;
         this.price = price;
     }
-
+    @JsonIgnore
     public Order getOrder(){
         return id.getOrder();
     }
@@ -58,5 +55,21 @@ public class OrderItem implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }
