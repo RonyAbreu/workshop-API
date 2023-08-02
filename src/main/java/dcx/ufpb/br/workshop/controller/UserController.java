@@ -15,17 +15,17 @@ import java.util.List;
 @RequestMapping(value = "/users")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserService service;
 
     @GetMapping
     public ResponseEntity<List<User>> findAll(){
-        List<User> userList = userService.findAll();
-        return ResponseEntity.ok().body(userList);
+        List<User> list = service.findAll();
+        return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<User> findByID(@PathVariable Long id){
-        User user = userService.findById(id);
-        return ResponseEntity.ok().body(user);
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj);
     }
 }
