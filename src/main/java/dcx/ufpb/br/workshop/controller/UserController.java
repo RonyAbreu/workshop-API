@@ -3,11 +3,9 @@ package dcx.ufpb.br.workshop.controller;
 import dcx.ufpb.br.workshop.entities.User;
 import dcx.ufpb.br.workshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +25,12 @@ public class UserController {
     public ResponseEntity<User> findByID(@PathVariable Long id){
         User obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @PostMapping
+    public ResponseEntity<User> insert(@RequestBody User obj){
+        obj = service.insert(obj);
+        HttpStatus status = HttpStatus.CREATED;
+        return new ResponseEntity<User>(obj,status);
     }
 }
