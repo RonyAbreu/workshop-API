@@ -31,7 +31,7 @@ public class UserController {
     public ResponseEntity<User> insert(@RequestBody User obj){
         obj = service.insert(obj);
         HttpStatus status = HttpStatus.CREATED;
-        return new ResponseEntity<User>(obj,status);
+        return ResponseEntity.status(status).body(obj);
     }
 
     @DeleteMapping(value = "/{id}")
